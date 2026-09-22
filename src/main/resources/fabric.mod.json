@@ -1,0 +1,37 @@
+{
+	"schemaVersion": 1,
+	"id": "mod-list-packet-disabler",
+	"version": "${version}",
+	"name": "Mod List Packet Disabler",
+	"description": "A Minecraft Fabric Mod which lets you disable the new \"MINECRAFT:MOD_LIST\" Packet from being sent. ",
+	"authors": [
+		"DZultra"
+	],
+	"contact": {
+		"sources": "https://github.com/DZultra/ModListPacketDisabler"
+	},
+	"license": "MIT",
+	"icon": "assets/mod-list-packet-disabler/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"net.dzultra.ModListPacketDisabler"
+		],
+		"client": [
+			"net.dzultra.ModListPacketDisablerClient"
+		]
+	},
+	"mixins": [
+		"mod-list-packet-disabler.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.19.5",
+		"minecraft": "~26.4-alpha.1",
+		"java": ">=25",
+		"fabric-api": "0.161.1+26.4",
+		"cloth-config": ">=26.3.158"
+	},
+	"suggests": {
+		"mod-menu": ">=21.0.0-beta.1"
+	}
+}

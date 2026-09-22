@@ -1,0 +1,14 @@
+{
+	"required": true,
+	"package": "net.dzultra.mixin",
+	"compatibilityLevel": "JAVA_25",
+	"mixins": [
+		"ClientHandshakePacketListenerImplMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	},
+	"overwrites": {
+		"requireAnnotations": true
+	}
+}

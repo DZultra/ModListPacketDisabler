@@ -1,0 +1,4 @@
+{
+  "text.autoconfig.mod-list-packet-disabler.title": "Mod List Packet Disabler Settings",
+  "text.autoconfig.mod-list-packet-disabler.option.sendMostList": "Whether to send the \"minecraft:mod_list\" Packet to servers on join."
+}
