@@ -13,16 +13,7 @@ This mod adds a toggle that determines whether the `minecraft:mod_list` packet i
 
 ## Configuration
 
-The toggle can be changed via:
-
-- **In-game options screen:** *(if you have a mod menu / config screen integration, describe it here — e.g. Mod Menu button, keybind, etc.)*
-- **Config file:** `config/mod_list_packet_toggle.json`
-
-```json
-{
-  "sendModListPacket": true
-}
-```
+The toggle can be changed via Cloth Config (access with Mod Menu)
 
 Set `sendModList` to `false` to stop the packet from being sent, or `true` to re-enable it. (false by default)
 
