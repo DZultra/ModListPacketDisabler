@@ -23,6 +23,13 @@ Set `sendModList` to `false` to stop the packet from being sent, or `true` to re
 | 26.4 Snapshot 1+  | ✅                         |
 | Earlier versions  | ❌ (packet does not exist) |
 
+## Dependencies
+
+| Cloth Config | Mod Menu         |
+|--------------|------------------|
+| \>=26.3.158  | \>=21.0.0-beta.1 |
+
+
 ## Why would I want to disable this?
 
 - Privacy 
