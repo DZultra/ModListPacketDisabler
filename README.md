@@ -1,7 +1,5 @@
 # Mod List Packet Disabler
 
-# Mod List Toggle
-
 A lightweight Minecraft (Java Edition) client mod that lets you toggle whether the `minecraft:mod_list` packet is sent to servers.
 
 ## Background
