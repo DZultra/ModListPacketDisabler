@@ -2,8 +2,6 @@
 
 A lightweight Minecraft (Java Edition) client mod that lets you toggle whether the `minecraft:mod_list` packet is sent to servers.
 
-## Background
-
 As of **Minecraft 26.4 Snapshot 1**, the client sends a new `minecraft:mod_list` custom packet payload when joining a server.
 
 Full changelog: https://www.minecraft.net/en-us/article/minecraft-26-4-snapshot-1
