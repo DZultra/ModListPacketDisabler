@@ -5,6 +5,13 @@ A lightweight Minecraft Fabric Client Mod that lets you toggle whether the `mine
 As of **Minecraft 26.4 Snapshot 1**, the client sends a new `minecraft:mod_list` custom packet payload when joining a server.
 Full changelog: https://www.minecraft.net/en-us/article/minecraft-26-4-snapshot-1
 
+## Disclaimer
+
+This Mod uses the newest Fabric API for 26.4-snaptshot-1 as well as Cloth Config & Mod Menu versions which are not intended for this version of Minecraft.
+Stuff can break, things might crash, any issues you encounter are not my responsibility. Use at your own risk.
+Any issue reports or pull request are welcome and will be considered, but I cannot guarantee that I will be able to fix or implement them.
+I will try to keep this mod updated, but I cannot guarantee that it will always be compatible with the latest versions of Minecraft or Fabric API.
+
 ## What this mod does
 
 By default, the Mod List Payload is empty. However, other Mods may add their own data to this packet, which can be used by servers to detect what mods you have installed.
