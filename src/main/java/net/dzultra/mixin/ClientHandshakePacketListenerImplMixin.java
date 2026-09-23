@@ -23,15 +23,18 @@ public abstract class ClientHandshakePacketListenerImplMixin {
             )
     )
     private void modListPacketToggle$maybeSuppressModList(Connection connection, Packet<?> packet) {
-        if (!AutoConfig.getConfigHolder(ModConfig.class).getConfig().sendModList
+        ModConfig modConfig = AutoConfig.getConfigHolder(ModConfig.class).getConfig();
+
+        if (!modConfig.sendModList
                 && packet instanceof ServerboundCustomPayloadPacket(
                 net.minecraft.network.protocol.common.custom.CustomPacketPayload payload
         )
                 && payload instanceof ModListPayload) {
-            ModListPacketDisabler.LOGGER.info("[ModListPacketDisabler] Suppressed ModListPayload");
+            if (modConfig.enableModLogs) ModListPacketDisabler.LOGGER.info("[ModListPacketDisabler] Suppressing ModListPayload");
             return;
         }
-        ModListPacketDisabler.LOGGER.info("[ModListPacketDisabler] Sending {}", packet.getClass().getSimpleName());
+
+        if (modConfig.enableModLogs) ModListPacketDisabler.LOGGER.info("[ModListPacketDisabler] Sending {}", packet.getClass().getSimpleName());
         connection.send(packet);
     }
 }

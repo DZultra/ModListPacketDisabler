@@ -1,5 +1,7 @@
 package net.dzultra;
 
+import me.shedaniel.autoconfig.AutoConfig;
+import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;
 import net.fabricmc.api.ModInitializer;
 
 import net.minecraft.resources.Identifier;
@@ -14,6 +16,7 @@ public class ModListPacketDisabler implements ModInitializer {
 	@Override
 	public void onInitialize() {
 		LOGGER.info("[ModListPacketDisabler] Initializing");
+		AutoConfig.register(ModConfig.class, GsonConfigSerializer::new);
 	}
 
 	public static Identifier id(String path) {

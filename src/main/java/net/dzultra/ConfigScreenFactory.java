@@ -27,6 +27,11 @@ public class ConfigScreenFactory {
                 .setSaveConsumer(value -> config.sendModList = value)
                 .build());
 
+        general.addEntry(entryBuilder
+                .startBooleanToggle(Component.literal("Send an empty Mod List Packet"), config.sendEmptyModList)
+                .setSaveConsumer(value -> config.sendEmptyModList = value)
+                .build());
+
         return builder.build();
     }
 }

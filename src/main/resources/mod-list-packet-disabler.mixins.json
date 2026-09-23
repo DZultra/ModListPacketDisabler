@@ -1,13 +1,18 @@
 {
-	"required": true,
-	"package": "net.dzultra.mixin",
-	"compatibilityLevel": "JAVA_25",
-	"mixins": [],
-	"client": ["ClientHandshakePacketListenerImplMixin"],
-	"injectors": {
-		"defaultRequire": 1
-	},
-	"overwrites": {
-		"requireAnnotations": true
+  "required": true,
+  "package": "net.dzultra.mixin",
+  "compatibilityLevel": "JAVA_25",
+  "mixins": [
+    "ModListPayloadMixin",
+    "ServerCommonPacketListenerImplMixin"
+  ],
+  "client": [
+    "ClientHandshakePacketListenerImplMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "overwrites": {
+    "requireAnnotations": true
 	}
 }
