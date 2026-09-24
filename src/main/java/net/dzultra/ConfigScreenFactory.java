@@ -32,6 +32,11 @@ public class ConfigScreenFactory {
                 .setSaveConsumer(value -> config.sendEmptyModList = value)
                 .build());
 
+        general.addEntry(entryBuilder
+                .startBooleanToggle(Component.literal("Send Mod Logs"), config.enableModLogs)
+                .setSaveConsumer(value -> config.enableModLogs = value)
+                .build());
+
         return builder.build();
     }
 }
