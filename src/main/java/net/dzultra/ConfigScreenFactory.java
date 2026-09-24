@@ -25,17 +25,25 @@ public class ConfigScreenFactory {
         general.addEntry(entryBuilder
                 .startBooleanToggle(Component.literal("Send Mod List Packet"), config.sendModList)
                 .setSaveConsumer(value -> config.sendModList = value)
-                .build());
+                .build()
+        );
 
         general.addEntry(entryBuilder
                 .startBooleanToggle(Component.literal("Send an empty Mod List Packet"), config.sendEmptyModList)
                 .setSaveConsumer(value -> config.sendEmptyModList = value)
-                .build());
+                .build()
+        );
 
         general.addEntry(entryBuilder
                 .startBooleanToggle(Component.literal("Send Mod Logs"), config.enableModLogs)
                 .setSaveConsumer(value -> config.enableModLogs = value)
-                .build());
+                .build()
+        );
+
+        general.addEntry(entryBuilder.startStrList(Component.literal("Custom Strings to send in Mod List Packet"), config.customStrings)
+                .setSaveConsumer(value -> config.customStrings = value)
+                .build()
+        );
 
         return builder.build();
     }
