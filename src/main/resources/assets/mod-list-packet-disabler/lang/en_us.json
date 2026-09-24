@@ -1,4 +1,6 @@
 {
   "text.autoconfig.mod-list-packet-disabler.title": "Mod List Packet Disabler Settings",
-  "text.autoconfig.mod-list-packet-disabler.option.sendMostList": "Whether to send the \"minecraft:mod_list\" Packet to servers on join."
+  "text.autoconfig.mod-list-packet-disabler.option.sendMostList": "Whether to send the \"minecraft:mod_list\" Packet to servers on join.",
+  "key.category.minecraft.mod-list-packet-disabler": "Mod List Packet Disabler Keybinds",
+  "key.mod-list-packet-disabler.open_settings": "Open Settings"
 }
