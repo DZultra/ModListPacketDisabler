@@ -7,8 +7,8 @@ Full changelog: https://www.minecraft.net/en-us/article/minecraft-26-4-snapshot-
 
 ## Disclaimer
 
-This Mod uses the newest Fabric API for 26.4-snaptshot-1 as well as Cloth Config & Mod Menu versions which are not intended for this version of Minecraft.
-Stuff can break, things might (and will) crash, any issues you encounter are not my responsibility. Use at your own risk.
+This Mod uses a newer Fabric API version for 26.4-snaptshot-1 as well as a Cloth Config version which is not intended for this version of Minecraft.
+Stuff can break, things might (and probably will) crash, any issues you encounter are not my responsibility. Use at your own risk.
 Any issue reports or pull request are welcome and will be considered, but I cannot guarantee that I will be able to fix or implement them.
 I will try to keep this mod updated, but I cannot guarantee that it will always be compatible with the latest versions of Minecraft or Fabric API.
 

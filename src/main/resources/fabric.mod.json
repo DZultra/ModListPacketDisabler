@@ -3,7 +3,7 @@
 	"id": "mod-list-packet-disabler",
 	"version": "${version}",
 	"name": "Mod List Packet Disabler",
-	"description": "A Minecraft Fabric Mod which lets you disable the new \"MINECRAFT:MOD_LIST\" Packet from being sent. ",
+	"description": "A lightweight Minecraft Fabric Client Mod that lets you toggle whether the newer `minecraft:mod_list` packet is sent to servers and allows you to modify its contents.",
 	"authors": [
 		"DZultra"
 	],
