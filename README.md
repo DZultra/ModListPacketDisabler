@@ -41,10 +41,11 @@ The default settings for `sendModList` and `sendEmptyModList` are recommended fo
 
 ## Dependencies
 
-| Cloth Config | Mod Menu         |
-|--------------|------------------|
-| \>=26.3.158  | \>=21.0.0-beta.1 |
+| Cloth Config | Mod Menu          |
+|--------------|-------------------|
+| \>=26.3.158  | \>=22.0.0-alpha.1 |
 
+(Cloth Config will be updated to proper version once it is released.)
 
 ## Why would I want to disable this?
 

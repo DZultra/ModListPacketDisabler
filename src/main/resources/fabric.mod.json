@@ -19,6 +19,9 @@
 		],
 		"client": [
 			"net.dzultra.ModListPacketDisablerClient"
+		],
+		"modmenu": [
+			"net.dzultra.ModMenuIntegration"
 		]
 	},
 	"mixins": [
@@ -32,6 +35,6 @@
 		"cloth-config": ">=26.3.158"
 	},
 	"suggests": {
-		"mod-menu": ">=21.0.0-beta.1"
+		"mod-menu": ">=22.0.0-alpha.1"
 	}
 }
