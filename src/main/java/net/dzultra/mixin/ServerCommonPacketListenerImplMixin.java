@@ -1,7 +1,6 @@
 package net.dzultra.mixin;
 
-import me.shedaniel.autoconfig.AutoConfig;
-import net.dzultra.ModConfig;
+import net.dzultra.config.ModConfig;
 import net.dzultra.ModListPacketDisabler;
 import net.minecraft.network.protocol.common.ServerboundCustomPayloadPacket;
 import net.minecraft.network.protocol.common.custom.ModListPayload;
@@ -24,7 +23,7 @@ public class ServerCommonPacketListenerImplMixin {
             ServerboundCustomPayloadPacket packet,
             CallbackInfo ci
     ) {
-        if (packet.payload() instanceof ModListPayload payload && AutoConfig.getConfigHolder(ModConfig.class).getConfig().enableModLogs) {
+        if (packet.payload() instanceof ModListPayload payload) {
             ModListPacketDisabler.LOGGER.info(
                     "[ModListPacketDisabler] ModListPayload entries: {}",
                     payload.entries()

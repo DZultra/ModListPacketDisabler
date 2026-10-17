@@ -3,11 +3,11 @@
   "package": "net.dzultra.mixin",
   "compatibilityLevel": "JAVA_25",
   "mixins": [
-    "ModListPayloadMixin",
     "ServerCommonPacketListenerImplMixin"
   ],
   "client": [
-    "ClientHandshakePacketListenerImplMixin"
+    "ClientHandshakePacketListenerImplMixin",
+    "ModListPayloadMixin"
   ],
   "injectors": {
     "defaultRequire": 1

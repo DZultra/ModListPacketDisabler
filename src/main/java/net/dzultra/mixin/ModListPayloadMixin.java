@@ -1,8 +1,7 @@
 package net.dzultra.mixin;
 
-import me.shedaniel.autoconfig.AutoConfig;
-import net.dzultra.ModConfig;
 import net.dzultra.ModListPacketDisabler;
+import net.dzultra.config.ModConfig;
 import net.minecraft.network.protocol.common.custom.ModListPayload;
 import net.minecraft.network.protocol.common.custom.PropertyMap;
 import net.minecraft.resources.Identifier;
@@ -34,10 +33,8 @@ public class ModListPayloadMixin {
     private static void forceEmptyModList(
             CallbackInfoReturnable<ModListPayload> cir
     ) {
-        ModConfig modConfig = AutoConfig.getConfigHolder(ModConfig.class).getConfig();
-
-        if (modConfig.sendEmptyModList) {
-            if (modConfig.enableModLogs) ModListPacketDisabler.LOGGER.info("[ModListPacketDisabler] Sending Empty Mod List Payload");
+        if (ModConfig.sendEmptyModList) {
+            if (ModConfig.enableModLogs) ModListPacketDisabler.LOGGER.info("[ModListPacketDisabler] Sending Empty Mod List Payload");
             cir.setReturnValue(EMPTY_PAYLOAD);
         }
     }

@@ -1,6 +1,6 @@
 package net.dzultra.keybinds;
 
-import net.dzultra.ConfigScreenFactory;
+import net.dzultra.config.ConfigScreenFactory;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;

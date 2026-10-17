@@ -1,8 +1,7 @@
 package net.dzultra.mixin;
 
-import me.shedaniel.autoconfig.AutoConfig;
-import net.dzultra.ModConfig;
 import net.dzultra.ModListPacketDisabler;
+import net.dzultra.config.ModConfig;
 import net.minecraft.client.multiplayer.ClientHandshakePacketListenerImpl;
 import net.minecraft.network.Connection;
 import net.minecraft.network.protocol.Packet;
@@ -23,18 +22,16 @@ public abstract class ClientHandshakePacketListenerImplMixin {
             )
     )
     private void modListPacketToggle$maybeSuppressModList(Connection connection, Packet<?> packet) {
-        ModConfig modConfig = AutoConfig.getConfigHolder(ModConfig.class).getConfig();
-
-        if (!modConfig.sendModList
+        if (!ModConfig.sendModList
                 && packet instanceof ServerboundCustomPayloadPacket(
                 net.minecraft.network.protocol.common.custom.CustomPacketPayload payload
         )
                 && payload instanceof ModListPayload) {
-            if (modConfig.enableModLogs) ModListPacketDisabler.LOGGER.info("[ModListPacketDisabler] Suppressing ModListPayload");
+            if (ModConfig.enableModLogs) ModListPacketDisabler.LOGGER.info("[ModListPacketDisabler] Suppressing ModListPayload");
             return;
         }
 
-        if (modConfig.enableModLogs) ModListPacketDisabler.LOGGER.info("[ModListPacketDisabler] Sending {}", packet.getClass().getSimpleName());
+        if (ModConfig.enableModLogs) ModListPacketDisabler.LOGGER.info("[ModListPacketDisabler] Sending {}", packet.getClass().getSimpleName());
         connection.send(packet);
     }
 }
