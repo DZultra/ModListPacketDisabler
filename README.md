@@ -7,8 +7,8 @@ Full changelog: https://www.minecraft.net/en-us/article/minecraft-26-4-snapshot-
 
 ## Disclaimer
 
-This Mod uses a newer Fabric API version for 26.4-snaptshot-1 as well as a Cloth Config version which is not intended for this version of Minecraft.
-Stuff can break, things might (and probably will) crash, any issues you encounter are not my responsibility. Use at your own risk.
+This Mod uses a newer Fabric API version for 26.4-snaptshot-3.
+Stuff can break, things might crash, any issues you encounter are not my responsibility. Use at your own risk.
 Any issue reports or pull request are welcome and will be considered, but I cannot guarantee that I will be able to fix or implement them.
 I will try to keep this mod updated, but I cannot guarantee that it will always be compatible with the latest versions of Minecraft or Fabric API.
 
@@ -22,7 +22,7 @@ As some players don't want specific mods who choose to add this functionality to
 
 ## Configuration
 
-The related settings can be changed via Cloth Config (accessible through Mod Menu) or at `minecraft/config/mod-list-packet-disabler.json`
+The related settings can be changed via YACL (accessible through Mod Menu and by pressing the Open Settings keybind) or at `minecraft/config/yacl.json5`
 
 * Set `sendModList` to `false` to stop the packet from being sent entirely, or `true` to re-enable it. (true by default)
 * Set `sendEmptyModList` to `true` to force an empty packet being sent. (true by default, only affects the packet if `sendModList` is set to `true`, else there is no packet to send)
@@ -36,16 +36,17 @@ The default settings for `sendModList` and `sendEmptyModList` are recommended fo
 
 | Minecraft Version | Supported                 |
 |-------------------|---------------------------|
-| 26.4 Snapshot 1+  | ✅                         |
+| 26.4 Snapshot 3+  | ✅                         |
+| 26.4 Snapshot 1+  | ✅ (Deprecated)            |
 | Earlier versions  | ❌ (packet does not exist) |
 
 ## Dependencies
 
-| Cloth Config | Mod Menu          |
-|--------------|-------------------|
-| \>=26.3.158  | \>=22.0.0-alpha.1 |
+| YetAnotherConfigLib  | Mod Menu          |
+|----------------------|-------------------|
+| \>=3.9.9+26.4-fabric | \>=22.0.0-alpha.2 |
 
-(Cloth Config will be updated to proper version once it is released.)
+(Versions before 1.2.0 use Cloth Config API instead of YACL. Prior versions are neither supported nor recommended.)
 
 ## Why would I want to disable this?
 
