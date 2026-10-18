@@ -8,7 +8,9 @@
 		"DZultra"
 	],
 	"contact": {
-		"sources": "https://github.com/DZultra/ModListPacketDisabler"
+		"homepage": "https://modrinth.com/mod/mod-list-packet-disabler",
+		"sources": "https://github.com/DZultra/ModListPacketDisabler",
+		"issues": "https://github.com/DZultra/ModListPacketDisabler/issues"
 	},
 	"license": "MIT",
 	"icon": "assets/mod-list-packet-disabler/icon.png",
