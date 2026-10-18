@@ -10,6 +10,7 @@ public class ModOptionGroups {
             .description(OptionDescription.of(Component.literal("These are the main options for the mod.")))
             .option(ModConfig.sendMostListOption)
             .option(ModConfig.sendEmptyModListOption)
+            .option(ModConfig.sendCustomModListOption)
             .build();
 
     private static final OptionGroup debugOptionsGroup = OptionGroup.createBuilder()

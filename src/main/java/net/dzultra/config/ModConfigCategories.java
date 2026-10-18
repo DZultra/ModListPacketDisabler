@@ -13,6 +13,8 @@ public class ModConfigCategories {
 
     private static final ConfigCategory customContentCategory = ConfigCategory.createBuilder()
             .name(Component.literal("Custom Content"))
+            .tooltip(Component.literal("These options allow you to customize the content of the mod list."))
+            .option(ModConfig.modListOption)
             .build();
 
     public static ConfigCategory getBooleanCategory() {
