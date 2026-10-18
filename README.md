@@ -18,15 +18,24 @@ By default, the Mod List Payload is empty. However, other Mods may add their own
 As some players don't want specific mods who choose to add this functionality to be broadcasted to every server they connect to, this mod allows you to either:
 * choose to force the packet to be sent with an empty payload (even if other mods add data to it),
 * disable the sending of the `minecraft:mod_list` packet entirely,
+* send a custom payload with configurable mod data,
 * or leave the default behavior (send the packet with whatever data is added by other mods).
+
+## Why would I want to disable this?
+
+- Privacy
+- Avoiding automated mod detection on servers
+- General preference to minimize what your client reports to servers
 
 ## Configuration
 
 The related settings can be changed via YACL (accessible through Mod Menu and by pressing the Open Settings keybind) or at `minecraft/config/yacl.json5`
 
 * Set `sendModList` to `false` to stop the packet from being sent entirely, or `true` to re-enable it. (true by default)
-* Set `sendEmptyModList` to `true` to force an empty packet being sent. (true by default, only affects the packet if `sendModList` is set to `true`, else there is no packet to send)
+* Set `sendEmptyModList` to `true` to force an empty packet being sent. (true by default, only affects the packet if `sendModList` is set to `true`, else there is no packet to send; overrides `sendCustomModList` Option)
+* Set `sendCustomModList` to `true` to send a packet with custom configurable data. (false by default, only affects the packet if `sendModList` is set to `true`, else there is no packet to send; overridden by `sendEmptyModList` Option)
 * Set `enableModLogs` to `false` to disable the mod logs that are printed to the console when the packet is sent or suppressed. (true by default)
+* Use the `modListOption` to configure the custom data that is sent in the packet if the custom one is configured to be sent.
 
 The default settings for `sendModList` and `sendEmptyModList` are recommended for most users, because this prevents servers from detecting:
 * what mods you have installed,
@@ -42,14 +51,8 @@ The default settings for `sendModList` and `sendEmptyModList` are recommended fo
 
 ## Dependencies
 
-| YetAnotherConfigLib  | Mod Menu (Optional)|
-|----------------------|--------------------|
-| \>=3.9.9+26.4-fabric | \>=22.0.0-alpha.2  |
+| YetAnotherConfigLib  | Mod Menu (Optional) |
+|----------------------|---------------------|
+| \>=3.9.9+26.4-fabric | \>=22.0.0-alpha.2   |
 
 (Versions before 1.2.0 use Cloth Config API instead of YACL. Prior versions are neither supported nor recommended.)
-
-## Why would I want to disable this?
-
-- Privacy 
-- Avoiding automated mod detection on servers
-- General preference to minimize what your client reports to servers

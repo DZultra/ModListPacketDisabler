@@ -24,7 +24,7 @@ public class ModConfig {
     public static Boolean sendEmptyModList = true;
     public static Option<Boolean> sendEmptyModListOption = createBooleanOption(
             "Send Empty Mod List",
-            "When enabled, an empty mod list will be sent to the server.",
+            "When enabled, an empty mod list will be sent to the server. This overrides the 'Send Custom Mod List' option. This option is only used when 'Send Mod List' is enabled.",
             true,
             () -> sendEmptyModList,
             newVal -> sendEmptyModList = newVal
@@ -33,7 +33,7 @@ public class ModConfig {
     public static Boolean sendCustomModList = false;
     public static Option<Boolean> sendCustomModListOption = createBooleanOption(
             "Send Custom Mod List",
-            "When enabled, the custom mod list defined in the 'Custom Mod List' section will be sent to the server. This option is only used when 'Send Mod List' is enabled.",
+            "When enabled, the custom mod list defined in the 'Custom Mod List' section will be sent to the server. This option is only used when 'Send Mod List' is enabled. This option is overridden by the 'Send Empty Mod List' option.",
             false,
             () -> sendCustomModList,
             newVal -> sendCustomModList = newVal
