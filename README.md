@@ -29,12 +29,12 @@ As some players don't want specific mods who choose to add this functionality to
 
 ## Configuration
 
-The related settings can be changed via YACL (accessible through Mod Menu and by pressing the Open Settings keybind) or at `minecraft/config/yacl.json5`
+The related settings can be changed via YACL (accessible through Mod Menu and by pressing the Open Settings keybind) or at `minecraft/config/mod-list-packet-disabler.json5`
 
 * Set `sendModList` to `false` to stop the packet from being sent entirely, or `true` to re-enable it. (true by default)
 * Set `sendEmptyModList` to `true` to force an empty packet being sent. (true by default, only affects the packet if `sendModList` is set to `true`, else there is no packet to send; overrides `sendCustomModList` Option)
 * Set `sendCustomModList` to `true` to send a packet with custom configurable data. (false by default, only affects the packet if `sendModList` is set to `true`, else there is no packet to send; overridden by `sendEmptyModList` Option)
-* Set `enableModLogs` to `false` to disable the mod logs that are printed to the console when the packet is sent or suppressed. (true by default)
+* Set `enableModLogs` to `true` to enable the mod logs that are printed to the console when the packet is sent or suppressed. (false by default)
 * Use the `modListOption` to configure the custom data that is sent in the packet if the custom one is configured to be sent.
 
 The default settings for `sendModList` and `sendEmptyModList` are recommended for most users, because this prevents servers from detecting:

@@ -12,10 +12,11 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.Map;
-import java.util.stream.Collectors;
+import java.util.LinkedHashMap;
 
 @Mixin(value = ModListPayload.class, priority = 2000)
 public class ModListPayloadMixin {
+    // Intentionally unused: kept as a fixed payload for manual testing
     @Unique
     private static final ModListPayload TEST_PAYLOAD =
             new ModListPayload(Map.of(
@@ -37,20 +38,30 @@ public class ModListPayloadMixin {
     private static void forceEmptyModList(
             CallbackInfoReturnable<ModListPayload> cir
     ) {
-        if (ModConfig.sendEmptyModList) {
-            if (ModConfig.enableModLogs) ModListPacketDisabler.LOGGER.info("[ModListPacketDisabler] Sending Empty Mod List Payload");
+        if (ModConfig.get().sendEmptyModList) {
+            if (ModConfig.get().enableModLogs) ModListPacketDisabler.LOGGER.info("[ModListPacketDisabler] Sending Empty Mod List Payload");
             cir.setReturnValue(EMPTY_PAYLOAD);
-        } else if (ModConfig.sendCustomModList) {
-            if (ModConfig.enableModLogs) ModListPacketDisabler.LOGGER.info("[ModListPacketDisabler] Sending Custom Mod List Payload");
-            cir.setReturnValue(new ModListPayload(ModConfig.modList.stream().collect(
-                    Collectors.toMap(
-                            mod -> Identifier.parse(mod.split(":")[0]),
-                            mod -> new PropertyMap(Map.of(
-                                    Identifier.parse("version"),
-                                    mod.split(":")[1]
-                            ))
-                    )
-            )));
+        } else if (ModConfig.get().sendCustomModList) {
+            if (ModConfig.get().enableModLogs) ModListPacketDisabler.LOGGER.info("[ModListPacketDisabler] Sending Custom Mod List Payload");
+            Map<Identifier, PropertyMap> entries = new LinkedHashMap<>();
+            for (String mod : ModConfig.get().modList) {
+                // Split at the last colon, so names may contain a namespace (e.g. "namespace:name:version")
+                int separator = mod.lastIndexOf(':');
+                Identifier id = separator > 0 && separator < mod.length() - 1 ? Identifier.tryParse(mod.substring(0, separator)) : null;
+                if (id == null) {
+                    if (ModConfig.get().enableModLogs) ModListPacketDisabler.LOGGER.warn("[ModListPacketDisabler] Skipping invalid Custom Mod List entry '{}'", mod);
+                    continue;
+                }
+                if (entries.containsKey(id)) {
+                    if (ModConfig.get().enableModLogs) ModListPacketDisabler.LOGGER.warn("[ModListPacketDisabler] Skipping duplicate Custom Mod List entry '{}'", mod);
+                    continue;
+                }
+                entries.put(id, new PropertyMap(Map.of(
+                        Identifier.parse("version"), // Property Name
+                        mod.substring(separator + 1) // Property Value
+                )));
+            }
+            cir.setReturnValue(new ModListPayload(entries));
         }
     }
 }

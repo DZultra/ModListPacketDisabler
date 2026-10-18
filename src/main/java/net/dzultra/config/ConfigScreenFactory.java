@@ -10,6 +10,7 @@ public class ConfigScreenFactory {
                 .title(Component.literal("Mod Config"))
                 .category(ModConfigCategories.getBooleanCategory())
                 .category(ModConfigCategories.getCustomContentCategory())
+                .save(ModConfig.HANDLER::save)
                 .build().generateScreen(parent);
     }
 }

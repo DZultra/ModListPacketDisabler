@@ -5,25 +5,21 @@ import dev.isxander.yacl3.api.OptionGroup;
 import net.minecraft.network.chat.Component;
 
 public class ModOptionGroups {
-    private static final OptionGroup mainOptionsGroup = OptionGroup.createBuilder()
-            .name(Component.literal("Main Options"))
-            .description(OptionDescription.of(Component.literal("These are the main options for the mod.")))
-            .option(ModConfig.sendMostListOption)
-            .option(ModConfig.sendEmptyModListOption)
-            .option(ModConfig.sendCustomModListOption)
-            .build();
-
-    private static final OptionGroup debugOptionsGroup = OptionGroup.createBuilder()
-            .name(Component.literal("Debug Options"))
-            .description(OptionDescription.of(Component.literal("These are the debug options for the mod.")))
-            .option(ModConfig.enableModLogsOption)
-            .build();
-
     public static OptionGroup getMainOptionsGroup() {
-        return mainOptionsGroup;
+        return OptionGroup.createBuilder()
+                .name(Component.literal("Main Options"))
+                .description(OptionDescription.of(Component.literal("These are the main options for the mod.")))
+                .option(ModConfig.createSendModListOption())
+                .option(ModConfig.createSendEmptyModListOption())
+                .option(ModConfig.createSendCustomModListOption())
+                .build();
     }
 
     public static OptionGroup getDebugOptionsGroup() {
-        return debugOptionsGroup;
+        return OptionGroup.createBuilder()
+                .name(Component.literal("Debug Options"))
+                .description(OptionDescription.of(Component.literal("These are the debug options for the mod.")))
+                .option(ModConfig.createEnableModLogsOption())
+                .build();
     }
 }
