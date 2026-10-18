@@ -42,9 +42,9 @@ The default settings for `sendModList` and `sendEmptyModList` are recommended fo
 
 ## Dependencies
 
-| YetAnotherConfigLib  | Mod Menu          |
-|----------------------|-------------------|
-| \>=3.9.9+26.4-fabric | \>=22.0.0-alpha.2 |
+| YetAnotherConfigLib  | Mod Menu (Optional)|
+|----------------------|--------------------|
+| \>=3.9.9+26.4-fabric | \>=22.0.0-alpha.2  |
 
 (Versions before 1.2.0 use Cloth Config API instead of YACL. Prior versions are neither supported nor recommended.)
 
