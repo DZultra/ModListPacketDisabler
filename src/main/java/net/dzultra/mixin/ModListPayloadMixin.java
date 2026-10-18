@@ -45,10 +45,16 @@ public class ModListPayloadMixin {
             if (ModConfig.get().enableModLogs) ModListPacketDisabler.LOGGER.info("[ModListPacketDisabler] Sending Custom Mod List Payload");
             Map<Identifier, PropertyMap> entries = new LinkedHashMap<>();
             for (String mod : ModConfig.get().modList) {
-                // Split at the last colon, so names may contain a namespace (e.g. "namespace:name:version")
+                String name = "";
+                String version = "";
                 int separator = mod.lastIndexOf(':');
-                Identifier id = separator > 0 && separator < mod.length() - 1 ? Identifier.tryParse(mod.substring(0, separator)) : null;
-                if (id == null) {
+                if (separator != -1) {
+                    name = mod.substring(0, separator);
+                    version = mod.substring(separator + 1);
+                }
+
+                Identifier id = Identifier.tryParse(name);
+                if (name.isEmpty() || version.isEmpty() || id == null) {
                     if (ModConfig.get().enableModLogs) ModListPacketDisabler.LOGGER.warn("[ModListPacketDisabler] Skipping invalid Custom Mod List entry '{}'", mod);
                     continue;
                 }
@@ -58,7 +64,7 @@ public class ModListPayloadMixin {
                 }
                 entries.put(id, new PropertyMap(Map.of(
                         Identifier.parse("version"), // Property Name
-                        mod.substring(separator + 1) // Property Value
+                        version // Property Value
                 )));
             }
             cir.setReturnValue(new ModListPayload(entries));
