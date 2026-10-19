@@ -7,6 +7,7 @@
   ],
   "client": [
     "ClientHandshakePacketListenerImplMixin",
+    "ListEntryWidgetMixin",
     "ModListPayloadMixin"
   ],
   "injectors": {

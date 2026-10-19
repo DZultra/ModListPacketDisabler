@@ -2,6 +2,7 @@ package net.dzultra.mixin;
 
 import net.dzultra.ModListPacketDisabler;
 import net.dzultra.config.ModConfig;
+import net.dzultra.config.ModEntry;
 import net.minecraft.network.protocol.common.custom.ModListPayload;
 import net.minecraft.network.protocol.common.custom.PropertyMap;
 import net.minecraft.resources.Identifier;
@@ -44,17 +45,9 @@ public class ModListPayloadMixin {
         } else if (ModConfig.get().sendCustomModList) {
             if (ModConfig.get().enableModLogs) ModListPacketDisabler.LOGGER.info("[ModListPacketDisabler] Sending Custom Mod List Payload");
             Map<Identifier, PropertyMap> entries = new LinkedHashMap<>();
-            for (String mod : ModConfig.get().modList) {
-                String name = "";
-                String version = "";
-                int separator = mod.lastIndexOf(':');
-                if (separator != -1) {
-                    name = mod.substring(0, separator);
-                    version = mod.substring(separator + 1);
-                }
-
-                Identifier id = Identifier.tryParse(name);
-                if (name.isEmpty() || version.isEmpty() || id == null) {
+            for (ModEntry mod : ModConfig.get().customModList) {
+                Identifier id = Identifier.tryParse(mod.id());
+                if (mod.id().isEmpty() || mod.version().isEmpty() || id == null) {
                     if (ModConfig.get().enableModLogs) ModListPacketDisabler.LOGGER.warn("[ModListPacketDisabler] Skipping invalid Custom Mod List entry '{}'", mod);
                     continue;
                 }
@@ -64,7 +57,7 @@ public class ModListPayloadMixin {
                 }
                 entries.put(id, new PropertyMap(Map.of(
                         Identifier.parse("version"), // Property Name
-                        version // Property Value
+                        mod.version() // Property Value
                 )));
             }
             cir.setReturnValue(new ModListPayload(entries));

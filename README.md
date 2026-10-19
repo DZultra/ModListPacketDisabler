@@ -35,7 +35,7 @@ The related settings can be changed via YACL (accessible through Mod Menu and by
 * Set `sendEmptyModList` to `true` to force an empty packet being sent. (true by default, only affects the packet if `sendModList` is set to `true`, else there is no packet to send; overrides `sendCustomModList` Option)
 * Set `sendCustomModList` to `true` to send a packet with custom configurable data. (false by default, only affects the packet if `sendModList` is set to `true`, else there is no packet to send; overridden by `sendEmptyModList` Option)
 * Set `enableModLogs` to `true` to enable the mod logs that are printed to the console when the packet is sent or suppressed. (false by default)
-* Use the `modListOption` to configure the custom data that is sent in the packet if the custom one is configured to be sent.
+* Use the Custom Mod List (`customModList` in the config file) to configure the custom data that is sent in the packet if the custom one is configured to be sent. Each entry has an `id` (for example `some_mod` or `namespace:some_mod`) and a `version`, and both can be edited in their own field in the config screen. Entries with an empty or invalid ID, an empty version or a duplicate ID are skipped.
 
 The default settings for `sendModList` and `sendEmptyModList` are recommended for most users, because this prevents servers from detecting:
 * what mods you have installed,

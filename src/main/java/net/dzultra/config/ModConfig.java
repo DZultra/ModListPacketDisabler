@@ -4,7 +4,6 @@ import dev.isxander.yacl3.api.ListOption;
 import dev.isxander.yacl3.api.Option;
 import dev.isxander.yacl3.api.OptionDescription;
 import dev.isxander.yacl3.api.controller.BooleanControllerBuilder;
-import dev.isxander.yacl3.api.controller.StringControllerBuilder;
 import dev.isxander.yacl3.config.v2.api.ConfigClassHandler;
 import dev.isxander.yacl3.config.v2.api.SerialEntry;
 import dev.isxander.yacl3.config.v2.api.serializer.GsonConfigSerializerBuilder;
@@ -38,7 +37,7 @@ public class ModConfig {
     public boolean enableModLogs = false;
 
     @SerialEntry
-    public List<String> modList = List.of("some_mod:1.0.0", "another_mod:1.2.3");
+    public List<ModEntry> customModList = List.of(new ModEntry("some_mod", "1.0.0"), new ModEntry("another_mod", "1.2.3"));
 
     public static ModConfig get() {
         return HANDLER.instance();
@@ -84,15 +83,14 @@ public class ModConfig {
         );
     }
 
-    public static ListOption<String> createModListOption() {
-        return ListOption.<String>createBuilder()
+    public static ListOption<ModEntry> createModListOption() {
+        return ListOption.<ModEntry>createBuilder()
                 .name(Component.literal("Custom Mod List"))
-                .description(OptionDescription.of(Component.literal("This option allows you to customize the mod list. Always use the format <name>:<version> for each entry. This option is only used when 'Send Mod List' and 'Send Custom Mod List' is enabled.")))
-                .binding(HANDLER.defaults().modList, () -> get().modList, newVal -> get().modList = newVal)
-                .controller(StringControllerBuilder::create)
-                .initial("")
+                .description(OptionDescription.of(Component.literal("This option allows you to customize the mod list. Each entry has a mod ID (for example 'some_mod' or 'namespace:some_mod') and a version. Entries with an empty or invalid ID or an empty version are skipped. This option is only used when 'Send Mod List' and 'Send Custom Mod List' is enabled.")))
+                .binding(HANDLER.defaults().customModList, () -> get().customModList, newVal -> get().customModList = newVal)
+                .customController(ModEntryController::new)
+                .initial(() -> new ModEntry("", ""))
                 .maximumNumberOfEntries(8192)
-                .minimumNumberOfEntries(1)
                 .build();
     }
 
